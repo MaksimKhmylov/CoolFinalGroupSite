@@ -1,1 +1,3 @@
-#Базы данных и подключение к ним тут
+import flask_sqlalchemy as sql
+
+db = sql.SQLAlchemy()

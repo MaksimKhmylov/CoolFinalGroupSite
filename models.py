@@ -16,12 +16,12 @@ class Place(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     description = db.Column(db.String(120), unique=True, nullable=False)
     country = db.Column(db.String(120), unique=True, nullable=False)
-    author = db.Column(db.Integer, db.ForeignKey('User.id'))
+    author = db.Column(db.Integer, db.ForeignKey('user.id'))
     comments = db.relationship('Comment', backref='place', lazy=True)
 
 class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(120), unique=True, nullable=False)
     rate = db.Column(db.Integer, unique=True, nullable=False)
-    author = db.Column(db.Integer, db.ForeignKey('User.id'))
-    place_id = db.Column(db.Integer, db.ForeignKey('Place.id'))
+    author = db.Column(db.Integer, db.ForeignKey('user.id'))
+    place_id = db.Column(db.Integer, db.ForeignKey('place.id'))
