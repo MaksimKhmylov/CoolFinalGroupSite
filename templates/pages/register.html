@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% macro render_field(field) %}
+{{ field(**kwargs)|safe }}
+  {% if field.errors %}
+    <ul class="text-danger">
+    {% for error in field.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+{% block page_title %}
+  {{ title }}
+{% endblock %}
+{% block content %}
+  <h6>Придумайте уникальное имя и пароль!</h6>
+  {% if form.errors %}
+    <ul class="text-danger">
+    {% for error in form.errors %}
+      <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+    <form method=post>
+    {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ render_field(form.username, class="form-control", placeholder="Имя пользователя") }}
+      </div>
+      <div class="form-group">
+        {{ render_field(form.email, class="form-control", placeholder="Email") }}
+      </div>
+      <div class="form-group">
+        {{ render_field(form.password, class="form-control", placeholder="Пароль") }}
+      </div>
+      <div class="form-group">
+        {{ render_field(form.confirm_password, class="form-control", placeholder="Подтвердите пароль") }}
+      </div>
+      <div class="form-group">
+        {{ render_field(form.submit) }}
+      </div>
+    </form>
+{% endblock %}
