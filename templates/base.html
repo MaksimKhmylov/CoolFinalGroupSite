@@ -9,6 +9,7 @@
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
     />
+
   {% include "toplink.html" %}
   </head>
   <body>
@@ -45,22 +46,37 @@
             <!-- End Logo Header -->
           </div>
           <!-- Navbar Header -->
-{#              {% include "navbar.html" %}#}
+              {% include "navbar.html" %}
           <!-- End Navbar -->
         </div>
 
         <div class="container">
           <div class="page-inner">
             <div class="page-header">
-              <h4 class="page-title">{% block page_title %}
+              <h4 class="page-title">
+                {% block page_title %}
 
               {% endblock %}</h4>
             </div>
-            <div class="page-category">{% block content %}
+            <div class="page-category">
+              {% block content %}
 
             {% endblock %}</div>
           </div>
         </div>
+
+    <div class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </div>
         {% include "footer.html" %}
       </div>
     </div>
