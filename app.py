@@ -50,6 +50,11 @@ def login():
             flash('Неудачный вход. Пожалуйста, проверьте email и пароль', 'danger')
     return render_template('/pages/login.html', title='Вход', form=form)
 
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
 
 
 if __name__ == '__main__':
