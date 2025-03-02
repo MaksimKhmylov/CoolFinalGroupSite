@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block content %}
-  <h6>Введите ваше имя пользователя и пароль для входа!</h6>
+  <h6>Введите ваш email и пароль для входа!</h6>
   {% if form.errors %}
     <ul class="text-danger">
     {% for error in form.errors %}
@@ -28,7 +28,9 @@
     {% endfor %}
     </ul>
   {% endif %}
-  <form method="post">
+  <div class="row">
+    <div class="col-md-5">
+      <form method="post">
     {{ form.hidden_tag() }}
     <div class="form-group">
       {{ render_field(form.email, class="form-control", placeholder="Email") }}
@@ -40,4 +42,12 @@
       {{ render_field(form.submit) }}
     </div>
   </form>
+    </div>
+
+    <div class="col-md-7">
+
+    </div>
+
+  </div>
+
 {% endblock %}
