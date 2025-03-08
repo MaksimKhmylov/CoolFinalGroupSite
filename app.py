@@ -21,6 +21,15 @@ def index():
     return flask.render_template('/pages/index.html', title='Hello World', content='Hello World!')
 
 
+@app.route('/place/<int:place_id>')
+def place(place_id):
+    place = Place.query.get(place_id)
+    if not place:
+        return "Место не найдено", 404
+    return render_template('place.html', place=place)
+
+
+
 # USERS
 @app.route("/register", methods=['GET', 'POST'])
 def register():
