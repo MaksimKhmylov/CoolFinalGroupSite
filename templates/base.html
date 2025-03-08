@@ -40,7 +40,8 @@
                 </button>
               </div>
               <button class="topbar-toggler more">
-                <i class="gg-more-vertical-alt"></i>
+{#                <i class="gg-more-vertical-alt mx-3"></i>#}
+                <i class="fas fa-align-justify"></i>
               </button>
             </div>
             <!-- End Logo Header -->
@@ -59,24 +60,26 @@
               {% endblock %}</h4>
             </div>
             <div class="page-category">
+
+              <div class="content">
+                  {% with messages = get_flashed_messages(with_categories=true) %}
+                      {% if messages %}
+                          {% for category, message in messages %}
+                              <div class="alert alert-{{ category }}">
+                                  {{ message }}
+                              </div>
+                          {% endfor %}
+                      {% endif %}
+                  {% endwith %}
+              </div>
+
               {% block content %}
 
             {% endblock %}</div>
           </div>
         </div>
 
-    <div class="content">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
 
-    </div>
         {% include "footer.html" %}
       </div>
     </div>

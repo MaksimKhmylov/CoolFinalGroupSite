@@ -14,10 +14,14 @@ class User(db.Model, UserMixin):
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    description = db.Column(db.String(120), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
     country = db.Column(db.String(120), nullable=False)
     author = db.Column(db.Integer, db.ForeignKey('user.id'))
+    picture = db.Column(db.String(120))
+    site = db.Column(db.String(120))
+    position = db.Column(db.String(120))
     # comments = db.relationship('Comment', backref='place', lazy=True)
+
 
 class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True)

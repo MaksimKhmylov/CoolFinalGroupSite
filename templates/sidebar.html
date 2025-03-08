@@ -19,7 +19,8 @@
         </button>
       </div>
       <button class="topbar-toggler more">
-        <i class="gg-more-vertical-alt"></i>
+        <i class="fas fa-align-justify"></i>
+{#        <i class="gg-more-vertical-alt mx-3"></i>#}
       </button>
     </div>
     <!-- End Logo Header -->
@@ -28,9 +29,27 @@
     <div class="sidebar-content">
       <ul class="nav nav-secondary">
         <li class="nav-item">
-          <a href="#">
-            <i class="fas fa-file"></i>
-            <p>Documentation</p>
+          <a href="/">
+            <i class="fas fa-align-justify"></i>
+            <p>Главная</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/{{ random_place }}">
+            <i class="fas fa-random"></i>
+            <p>Случайное место</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/add_place">
+            <i class="fas fa-plus"></i>
+            <p>Добавить место</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="https://github.com/MaksimKhmylov/CoolFinalGroupSite">
+            <i class="fab fa-github-square"></i>
+            <p>Гитхаб</p>
           </a>
         </li>
       </ul>
