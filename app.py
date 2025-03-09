@@ -21,6 +21,8 @@ login_manager.login_view = 'login'
 
 @app.route('/')
 def index():
+    if not Place.query.all():
+        return render_template("/pages/no_places.html")
     return render_template('/pages/index.html',
                            places=Place.query.all(),
                            random_place=random.randint(1, len(Place.query.all()))
