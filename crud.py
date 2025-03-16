@@ -1,5 +1,8 @@
+import os
+
 from flask_login import LoginManager, login_user
 from flask import flash, redirect, url_for
+from werkzeug.utils import secure_filename
 
 from models import User, Place
 from db import db
@@ -28,8 +31,10 @@ def get_user_by_username(username):
     user = User.query.filter_by(username=username).first()
     return user
 
-def create_place(name, description, country,author , pictures, site, position):
-    place = Place(name=name, description=description, country=country, author=author, picture=pictures, site=site, position=position)
+def create_place(name, description, country,author , picture, site, position):
+    place = Place(
+        name=name, description=description, country=country,
+        author=author, picture=picture, site=site, position=position)
     db.session.add(place)
     db.session.commit()
     return place

@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
@@ -30,10 +31,10 @@ class LoginForm(FlaskForm):
 
 class AddPlaceForm(FlaskForm):
     name = StringField('Название', validators=[DataRequired()])
-    description = StringField('Описание', validators=[DataRequired()])
+    description = TextAreaField('Описание', validators=[DataRequired()])
     country = StringField('Страна', validators=[DataRequired()])
-    author = StringField('Ваше ID пользователя(можете оставить 1 для анонимности)')
-    pictures = StringField('Название картинок через запятую(должны быть в файлах проекта)')
+    author = StringField('ID пользователя')
+    picture = FileField('Picture', validators=[FileAllowed(['jpg', 'png'], 'Images only!')])
     site = StringField('Сайт', validators=[DataRequired()])
     position = StringField('Местоположение', validators=[DataRequired()])
     submit = SubmitField("Добавить")

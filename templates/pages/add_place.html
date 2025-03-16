@@ -22,19 +22,19 @@
 {% block content %}
   <div class="row">
     <div class="col-md-5">
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <div class="form-group">
       {{ render_field(form.name, class="form-control", placeholder="Название") }}
     </div>
     <div class="form-group">
-      {{ render_field(form.description, class="form-control", placeholder="Описание") }}
+      {{ render_field(form.description, class="form-control", rows="5", placeholder="Описание") }}
     </div>
     <div class="form-group">
       {{ render_field(form.country, class="form-control", placeholder="Страна") }}
     </div>
     <div class="form-group">
-      {{ render_field(form.pictures, class="form-control", placeholder="Картинки") }}
+      {{ render_field(form.picture, class="form-control-file") }}
     </div>
     <div class="form-group">
       {{ render_field(form.site, class="form-control", placeholder="Сайт") }}
@@ -43,7 +43,7 @@
       {{ render_field(form.position, class="form-control", placeholder="Местоположение") }}
     </div>
     <div class="form-group">
-      {{ render_field(form.submit) }}
+      {{ render_field(form.submit, class="btn btn-primary") }}
     </div>
   </form>
     </div>
